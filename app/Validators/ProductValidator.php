@@ -8,7 +8,7 @@ class ProductValidator {
     {
         return [
             'name' => ['required', 'max:255'],
-            'manufactured_at' => ['required', 'integer', 'min:1905', 'max:2021'],
+            'manufactured_at' => ['required', 'integer', 'min:1901', 'max:2021'],
         ];
     }
 

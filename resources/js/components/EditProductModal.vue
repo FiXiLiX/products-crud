@@ -60,7 +60,7 @@ import Error from './Error.vue';
                 manufactured_at: undefined,
                 image: '',
                 is_editing: false,
-                error: undefined
+                error: undefined,
             }
         },
         watch: {
@@ -71,6 +71,11 @@ import Error from './Error.vue';
                     $("#editProduct").modal();
                 }
             },
+        },
+        computed: {
+            hash() {
+                return Math.ceil(Math.random() * 10000);
+            }
         },
         methods: {
             editProductModalClosed() {
@@ -107,7 +112,7 @@ import Error from './Error.vue';
                 this.image = this.$refs.image.files[0];
             },
             image_url(product) {
-                return `/api/products/${product.id}/image?${Math.ceil(Math.random() * 10000)}`;
+                return `/api/products/${product.id}/image?${this.hash}`;
             }
         },
         components: {Error}

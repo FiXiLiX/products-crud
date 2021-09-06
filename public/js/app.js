@@ -2098,6 +2098,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
     }
   },
+  computed: {
+    hash: function hash() {
+      return Math.ceil(Math.random() * 10000);
+    }
+  },
   methods: {
     editProductModalClosed: function editProductModalClosed() {
       this.$refs.image.value = null;
@@ -2159,7 +2164,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.image = this.$refs.image.files[0];
     },
     image_url: function image_url(product) {
-      return "/api/products/".concat(product.id, "/image?").concat(Math.ceil(Math.random() * 10000));
+      return "/api/products/".concat(product.id, "/image?").concat(this.hash);
     }
   },
   components: {
