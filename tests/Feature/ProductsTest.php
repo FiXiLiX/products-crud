@@ -89,7 +89,7 @@ class ProductTest extends TestCase
             ->json('GET', '/api/products');
             
         $response->assertStatus(200);
-        $response->assertJson($products->toArray());
+        $response->assertJson(Product::where('user_id', $user->id)->orderBy('updated_at', 'DESC')->get()->toArray());
         $response->assertJsonCount(10);
         $response->assertJsonStructure([
             '*' => [ 'id', 'name', 'created_at', 'updated_at', 'image_url' ],
