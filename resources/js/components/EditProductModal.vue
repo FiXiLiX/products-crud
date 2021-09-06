@@ -30,7 +30,7 @@
                 <img :src="image_url(product)" class="image" />
             </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal" @click="$emit('editProductModalClosed')">Close</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal" @click="editProductModalClosed">Close</button>
             <button type="submit" class="btn btn-success">
                 <span v-if="!is_editing">Edit</span>
                 <span v-else class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
@@ -73,6 +73,10 @@ import Error from './Error.vue';
             },
         },
         methods: {
+            editProductModalClosed() {
+                this.$refs.image.value = null;
+                this.$emit('addProductModalClosed');
+            },
             async editProduct() {
                 this.is_editing = true;
                 this.error = undefined;
@@ -97,6 +101,7 @@ import Error from './Error.vue';
                 this.is_editing = false;
                 this.name = '';
                 this.manufactured_at = undefined;
+                this.$refs.image.value = null;
             },
             handleImageUpload() {
                 this.image = this.$refs.image.files[0];

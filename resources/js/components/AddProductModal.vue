@@ -27,7 +27,7 @@
                 /> 
             </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal" @click="$emit('addProductModalClosed')">Close</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal" @click="addProductModalClosed">Close</button>
             <button type="submit" class="btn btn-success">
                 <span v-if="adding===false">Add</span>
                 <span v-else class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
@@ -63,6 +63,10 @@ import Error from './Error.vue';
             }
         },
         methods: {
+            addProductModalClosed() {
+                this.$refs.image.value = null;
+                this.$emit('addProductModalClosed');
+            },
             async addProduct() {
                 if(this.adding) return;
                 this.error = undefined;
@@ -87,6 +91,7 @@ import Error from './Error.vue';
                 this.adding = false;
                 this.name = '';
                 this.manufactured_at = undefined;
+                this.$refs.image.value = null;
             },
             handleImageUpload() {
                 this.image = this.$refs.image.files[0];

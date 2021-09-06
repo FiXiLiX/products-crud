@@ -39,17 +39,17 @@
 
         <add-product-modal 
             :show="modals.add.show"
-            @addProductModalClosed="() => modals.add.show = false"
+            @addProductModalClosed="addProductModalClosed"
             @productAdded="productAdded"
         />
         <view-product-modal 
             :show="modals.view.show"
-            @viewProductModalClosed="() => modals.view.show = false"
+            @viewProductModalClosed="viewProductModalClosed"
             :product="product"
         />
         <edit-product-modal
             :show="modals.edit.show"
-            @editProductModalClosed="() => modals.edit.show = false"
+            @editProductModalClosed="editProductModalClosed"
             @productEdited="productEdited"
             :product="product"
         />
@@ -90,6 +90,15 @@
                     is_deleting: false
                 }));
                 this.loading = false;
+            },
+            addProductModalClosed() {
+                this.modals.add.show = false;
+            },
+            viewProductModalClosed() {
+                this.modals.add.show = false;
+            },
+            editProductModalClosed() {
+                this.modals.edit.show = false;
             },
             productAdded() {
                 this.refreshProducts();

@@ -1929,6 +1929,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   },
   methods: {
+    addProductModalClosed: function addProductModalClosed() {
+      this.$refs.image.value = null;
+      this.$emit('addProductModalClosed');
+    },
     addProduct: function addProduct() {
       var _this = this;
 
@@ -1978,8 +1982,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _this.adding = false;
                 _this.name = '';
                 _this.manufactured_at = undefined;
+                _this.$refs.image.value = null;
 
-              case 23:
+              case 24:
               case "end":
                 return _context.stop();
             }
@@ -2094,6 +2099,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   },
   methods: {
+    editProductModalClosed: function editProductModalClosed() {
+      this.$refs.image.value = null;
+      this.$emit('addProductModalClosed');
+    },
     editProduct: function editProduct() {
       var _this = this;
 
@@ -2136,8 +2145,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _this.is_editing = false;
                 _this.name = '';
                 _this.manufactured_at = undefined;
+                _this.$refs.image.value = null;
 
-              case 22:
+              case 23:
               case "end":
                 return _context.stop();
             }
@@ -2347,6 +2357,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee2);
       }))();
+    },
+    addProductModalClosed: function addProductModalClosed() {
+      this.modals.add.show = false;
+    },
+    viewProductModalClosed: function viewProductModalClosed() {
+      this.modals.add.show = false;
+    },
+    editProductModalClosed: function editProductModalClosed() {
+      this.modals.edit.show = false;
     },
     productAdded: function productAdded() {
       this.refreshProducts();
@@ -39655,11 +39674,7 @@ var render = function() {
                   {
                     staticClass: "btn btn-default",
                     attrs: { type: "button", "data-dismiss": "modal" },
-                    on: {
-                      click: function($event) {
-                        return _vm.$emit("addProductModalClosed")
-                      }
-                    }
+                    on: { click: _vm.addProductModalClosed }
                   },
                   [_vm._v("Close")]
                 ),
@@ -39839,11 +39854,7 @@ var render = function() {
                   {
                     staticClass: "btn btn-default",
                     attrs: { type: "button", "data-dismiss": "modal" },
-                    on: {
-                      click: function($event) {
-                        return _vm.$emit("editProductModalClosed")
-                      }
-                    }
+                    on: { click: _vm.editProductModalClosed }
                   },
                   [_vm._v("Close")]
                 ),
@@ -40054,28 +40065,20 @@ var render = function() {
       _c("add-product-modal", {
         attrs: { show: _vm.modals.add.show },
         on: {
-          addProductModalClosed: function() {
-            return (_vm.modals.add.show = false)
-          },
+          addProductModalClosed: _vm.addProductModalClosed,
           productAdded: _vm.productAdded
         }
       }),
       _vm._v(" "),
       _c("view-product-modal", {
         attrs: { show: _vm.modals.view.show, product: _vm.product },
-        on: {
-          viewProductModalClosed: function() {
-            return (_vm.modals.view.show = false)
-          }
-        }
+        on: { viewProductModalClosed: _vm.viewProductModalClosed }
       }),
       _vm._v(" "),
       _c("edit-product-modal", {
         attrs: { show: _vm.modals.edit.show, product: _vm.product },
         on: {
-          editProductModalClosed: function() {
-            return (_vm.modals.edit.show = false)
-          },
+          editProductModalClosed: _vm.editProductModalClosed,
           productEdited: _vm.productEdited
         }
       })
