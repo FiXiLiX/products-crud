@@ -21,6 +21,8 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
+            $table->index(['user_id', 'updated_at']);
+
             $table->foreign('user_id')->references('id')->on('users');
         });
     }
