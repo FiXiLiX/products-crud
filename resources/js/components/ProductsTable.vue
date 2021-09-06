@@ -23,7 +23,7 @@
                                 <td>{{product.manufactured_at}}</td>
                                 <td>
                                     <button v-if="!loading" class="btn btn-success" @click="() => showViewProductModal(product)">Show</button>
-                                    <button v-if="!loading" class="btn btn-warning" @click="() => showEditProductModal(product)">Edit</button>
+                                    <button v-if="!loading" class="btn btn-warning text-light" @click="() => showEditProductModal(product)">Edit</button>
                                     <button v-if="!loading" class="btn btn-danger" @click="() => deleteProduct(product.id)">
                                         <span v-if="!product.is_deleting">Delete</span>
                                         <span v-else class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>

@@ -40015,7 +40015,7 @@ var render = function() {
                               ? _c(
                                   "button",
                                   {
-                                    staticClass: "btn btn-warning",
+                                    staticClass: "btn btn-warning text-light",
                                     on: {
                                       click: function() {
                                         return _vm.showEditProductModal(product)
