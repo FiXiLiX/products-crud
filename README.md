@@ -1,6 +1,6 @@
-#Products
+# Products
 
-##Todo
+## Todo
 
 - Year 2021 is hardcoded!
 - Preview of loaded Images
